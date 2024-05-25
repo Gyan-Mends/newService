@@ -7,4 +7,8 @@ installGlobals();
 
 export default defineConfig({
   plugins: [remix(), tsconfigPaths()],
+
+  optimizeDeps: {
+    exclude: ['bcrypt']
+  }
 });

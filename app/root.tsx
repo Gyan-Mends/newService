@@ -5,20 +5,30 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import type { LinksFunction } from "@remix-run/node";
+import { NextUIProvider } from "@nextui-org/react";
+import stylesheet from "~/style.css?url";
+
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: stylesheet },
+];
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
+        <title>Tru</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
       </head>
       <body>
+       <NextUIProvider>
         {children}
-        <ScrollRestoration />
         <Scripts />
+        <ScrollRestoration />
+        </NextUIProvider>
       </body>
     </html>
   );
